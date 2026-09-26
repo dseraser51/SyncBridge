@@ -1,0 +1,11 @@
+{
+  "name": "@syncbridge/client",
+  "version": "0.1.0",
+  "description": "Local-first IndexedDB synchronization client for SyncBridge",
+  "type": "module",
+  "main": "./syncbridge-client.js",
+  "exports": { ".": "./syncbridge-client.js" },
+  "author": "عاطف بالهادي (Atif Alhadi)",
+  "license": "MIT",
+  "files": ["syncbridge-client.js"]
+}

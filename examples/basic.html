@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8"><title>SyncBridge SDK example</title>
+<button id="add">إضافة مهمة</button><button id="refresh">تحديث</button><pre id="output"></pre>
+<script type="module">
+  import { createSyncClient, login } from "../sdk/syncbridge-client.js";
+  // In a real application, store these after your own login screen.
+  const session = await login("http://localhost:8080", "developer@example.com", "password123");
+  const sync = createSyncClient({ serverUrl: "http://localhost:8080", ...session, databaseName: "example-app" });
+  const tasks = sync.collection("tasks");
+  const render = async () => output.textContent = JSON.stringify(await tasks.toArray(), null, 2);
+  add.onclick = async () => { await tasks.put({ id: crypto.randomUUID(), title: "مهمة جديدة" }); await render(); };
+  refresh.onclick = render;
+  sync.start();
+  await render();
+</script>

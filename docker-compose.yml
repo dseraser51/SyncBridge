@@ -1,0 +1,13 @@
+services:
+  syncbridge:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SYNCBRIDGE_DB: /data/syncbridge.db
+    volumes:
+      - syncbridge-data:/data
+    restart: unless-stopped
+
+volumes:
+  syncbridge-data:
